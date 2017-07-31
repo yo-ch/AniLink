@@ -1,5 +1,6 @@
 const userPass = 'bXlhbmlsaXN0VXNlcjpteWFuaWxpc3QyMTkzODEyMDk1Nw==';
-retrieveMALURL();
+if (location.href.search(/\/anime\/|\/manga\//) > 0)
+    retrieveMALURL();
 setTimeout(pageObserver, 2000);
 
 /*
@@ -9,7 +10,7 @@ function pageObserver() {
     var handler;
     var observer = new MutationObserver(function (mutations) {
         try {
-            if (mutations[0].addedNodes[0].id == 'view') {
+            if (mutations[0].addedNodes[0].id == 'view' && (location.href.search(/\/anime\/|\/manga\//) > 0)) {
                 retrieveMALURL();
             }
         } catch (err) {}
@@ -27,11 +28,12 @@ Retrieve the corresponding MAL URL of the anime/manga.
 */
 function retrieveMALURL() {
     //Retrieve title. If empty/null, try again in 50ms.
-    var title = document.getElementsByTagName('h1')[0];
-    if (!title || title.innerText == '') {
-        return setTimeout(retrieveMALURL, 50);
+    var title = '';
+    var tags = document.getElementsByTagName('h1');
+    if (tags.length == 0 || !tags[0] || tags[0].innerText == '') {
+        return setTimeout(retrieveMALURL, 100);
     } else {
-        title = title.innerText.split(/\s+/).join('+');
+        title = tags[0].innerText.split(/\s+/).join('+');
     }
 
     //Check whether page is an anime or a manga.
@@ -51,6 +53,7 @@ function retrieveMALURL() {
             var id = xmlDoc.getElementsByTagName('id')[0].innerText;
             injectMALButton(id, type);
         }
+
     }
     getMAL.send();
 }
@@ -62,6 +65,10 @@ function injectMALButton(id, type) {
     var malLink = `https://myanimelist.net/${type}/${id}`;
 
     var nav = document.getElementsByClassName('series__title')[0];
+
+    if (!nav) {
+        return setTimeout(injectMALButton(id, type), 50);
+    }
 
     var button = document.createElement('img');
     button.src = chrome.extension.getURL('images/malIcon.png');
