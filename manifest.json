@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+
+  "name": "MyAnilist",
+  "description": "Adds a link to the equivalent MyAnimeList page of Anilist anime/mange pages. Useful for when Anilist is missing information.",
+  "version": "1.0",
+
+  "content_scripts": [{
+    "matches": ["*://anilist.co/anime/*", "*://anilist.co/manga/*"],
+    "css": ["link.css"],
+    "js": ["anilist.js"],
+    "run_at": "document_end"
+  }],
+
+  "icons": {
+    "48": "images/myAnilistIcon48.png",
+    "128": "images/myAnilistIcon.png"
+  },
+
+  "browser_action": {
+    "default_icon": "images/myAnilistIcon.png"
+  },
+
+  "web_accessible_resources": ["images/malIcon.png"],
+
+  "permissions": ["https://myanimelist.net/api/*"]
+}

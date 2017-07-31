@@ -1,0 +1,12 @@
+.series__header .series__banner .series__title {
+  position: relative;
+}
+
+.malLink {
+  height: auto;
+  width: 32px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+}
