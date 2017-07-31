@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "MyAnilist",
-  "description": "Adds a link to the equivalent MyAnimeList page of Anilist anime/mange pages. Useful for when Anilist is missing information.",
+  "description": "Adds a link to the equivalent MyAnimeList page of Anilist anime/manga pages. Useful for when Anilist is missing information.",
   "version": "1.0",
 
   "content_scripts": [{
