@@ -1,4 +1,4 @@
-const userPass = 'bXlhbmlsaXN0VXNlcjpteWFuaWxpc3QyMTkzODEyMDk1Nw==';
+const userPass = 'base64 encoded user:pass';
 if (location.href.search(/\/anime\/|\/manga\//) > 0)
     retrieveMALURL();
 setTimeout(pageObserver, 2000);
