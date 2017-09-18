@@ -10,7 +10,8 @@ function pageObserver() {
     var handler;
     var observer = new MutationObserver(function (mutations) {
         try {
-            if (mutations[0].addedNodes[0].id == 'view' && (location.href.search(/\/anime\/|\/manga\//) > 0)) {
+            if (mutations[0].addedNodes[0].id == 'view' && (location.href.search(
+                    /\/anime\/|\/manga\//) > 0)) {
                 retrieveMALURL();
             }
         } catch (err) {}
@@ -37,9 +38,9 @@ function retrieveMALURL() {
     }
 
     //Check whether page is an anime or a manga.
-    var type = location.href.search('anime') >= 0
-        ? 'anime'
-        : 'manga';
+    var type = location.href.search('anime') >= 0 ?
+        'anime' :
+        'manga';
 
     //Make MAL API request.
     var getMAL = new XMLHttpRequest();
@@ -50,7 +51,20 @@ function retrieveMALURL() {
             //Parse ID to get MAL link.
             var parser = new DOMParser();
             var xmlDoc = parser.parseFromString(this.responseText, 'text/html');
-            var id = xmlDoc.getElementsByTagName('id')[0].innerText;
+
+            var typeArray = xmlDoc.getElementsByTagName('type');
+            var desiredIndex = null; //The index of the desired response (TV type), if matched.
+            for (let i = 0; i < typeArray.length; i++) {
+                console.log(typeArray[i].innerText);
+                if (typeArray[i].innerText == 'TV' && type == 'anime' || typeArray[i].innerText ==
+                    'Manga' && type == 'manga') {
+                    desiredIndex = i;
+                    break;
+                }
+            }
+
+            var id = xmlDoc.getElementsByTagName('id')[desiredIndex != null ?
+                desiredIndex : 0].innerText; //Use index if found, otherwise default to 0.
             injectMALButton(id, type);
         }
 
@@ -78,6 +92,7 @@ function injectMALButton(id, type) {
     var link = document.createElement('a');
     link.appendChild(button);
     link.href = malLink;
+    link.target = '_blank';
 
     nav.appendChild(link);
 }
