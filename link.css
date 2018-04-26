@@ -4,15 +4,15 @@
 
 .malLink {
   position: absolute;
-  height:32px;
-  width:32px;
+  height: 32px;
+  width: 32px;
   top: 50%;
   transform: translateY(-50%);
   left: 7px;
 }
 
 .malImage {
-  position:absolute;
+  position: absolute;
   height: auto;
   width: 32px;
   top: 0px;
