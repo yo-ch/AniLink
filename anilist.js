@@ -4,7 +4,7 @@ if (window.location.href.search(/\/anime\/|\/manga\//) > 0) {
 }
 
 /**
- * Check for page change every 50ms.
+ * Check for page change every 100ms.
  */
 setInterval(() => {
     if (currentPage != window.location.href &&
