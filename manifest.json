@@ -29,5 +29,5 @@
 
   "web_accessible_resources": ["images/malIcon.png"],
 
-  "permissions": ["https://myanimelist.net/api/*"]
+  "permissions": ["https://graphql.anilist.co/"]
 }
