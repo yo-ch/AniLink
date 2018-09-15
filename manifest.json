@@ -3,7 +3,13 @@
 
   "name": "MyAnilist",
   "description": "Adds a link to the equivalent MyAnimeList page of Anilist anime/manga pages. Useful for when Anilist is missing information.",
-  "version": "1.1",
+  "version": "1.2",
+
+  "applications": {
+    "gecko": {
+      "id": "myanilist@ext.com"
+    }
+  },
 
   "content_scripts": [{
     "matches": ["*://anilist.co/*"],
