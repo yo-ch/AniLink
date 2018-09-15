@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
 
-  "name": "MyAnilist",
+  "name": "AniLink",
   "description": "Adds a link to the equivalent MyAnimeList page of Anilist anime/manga pages. Useful for when Anilist is missing information.",
   "version": "1.2",
 
   "applications": {
     "gecko": {
-      "id": "myanilist@ext.com"
+      "id": "AniLink@ext.com"
     }
   },
 
