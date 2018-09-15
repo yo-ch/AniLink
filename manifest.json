@@ -19,12 +19,12 @@
   }],
 
   "icons": {
-    "48": "images/myAnilistIcon48.png",
-    "128": "images/myAnilistIcon.png"
+    "48": "images/anilink48.png",
+    "64": "images/anilink.png"
   },
 
   "browser_action": {
-    "default_icon": "images/myAnilistIcon.png"
+    "default_icon": "images/anilink.png"
   },
 
   "web_accessible_resources": ["images/malIcon.png"],
