@@ -45,7 +45,9 @@ function retrieveMALURL() {
         .then(resp => resp.json())
         .then(resp => {
             const malId = resp.data.Media.idMal;
-            injectMALButton(malId, type);
+            if (malId) {
+                injectMALButton(malId, type);
+            }
         })
         .catch(error => {
             console.log(error);
@@ -63,7 +65,7 @@ function injectMALButton(id, type) {
     let nav = document.getElementsByClassName('actions')[0];
 
     if (!nav) {
-        return setTimeout(injectMALButton(id, type), 100);
+        return setTimeout(injectMALButton.bind(null, id, type), 100);
     }
 
     //Clear old button.
