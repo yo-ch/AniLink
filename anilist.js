@@ -7,10 +7,12 @@ if (window.location.href.search(/\/anime\/|\/manga\//) > 0) {
  * Check for page change every 100ms.
  */
 setInterval(() => {
-    if (currentPage != window.location.href &&
-        window.location.href.search(/\/anime\/|\/manga\//) > 0) {
+    if (currentPage != window.location.href) {
         currentPage = window.location.href;
-        retrieveMALURL();
+
+        if (window.location.href.search(/\/anime\/|\/manga\//) !== -1) {
+            retrieveMALURL();
+        }
     }
 }, 100);
 /*
